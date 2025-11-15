@@ -1,66 +1,140 @@
-import React from "react";
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Büyük İskender</title>
+  <style>
+    body {
+      margin: 0;
+      background: #0a0a0f;
+      font-family: Arial, sans-serif;
+      color: #ddd;
+    }
 
+    /* Navbar */
+    .nav {
+      background: #141422;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #a533ff;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
 
+    .nav a {
+      color: #ff4f7a;
+      margin-left: 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
 
-export default function App() {
-  return (
-    <div className="min-h-screen bg-[#0a0a0f] text-gray-200 font-sans">
-      {/* NAVBAR */}
-      <nav className="sticky top-0 z-50 bg-[#0f0f17] border-b border-purple-600/40 px-8 py-4 flex justify-between items-center shadow-lg">
-        <h1 className="text-xl font-bold tracking-wide text-purple-400">BÜYÜK İSKENDER</h1>
-        <div className="space-x-6 text-sm">
-          <a href="#hayat" className="hover:text-red-400">Hayatı</a>
-          <a href="#fetihler" className="hover:text-red-400">Fetihler</a>
-          <a href="#mirasi" className="hover:text-red-400">Mirası</a>
-        </div>
-      </nav>
+    .header {
+      text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(to bottom, #3f0071aa, transparent);
+    }
 
-      {/* HERO */}
-      <header className="px-8 py-24 text-center bg-gradient-to-b from-purple-900/40 to-transparent">
-        <h2 className="text-4xl font-bold text-purple-300 mb-3">Büyük İskender</h2>
-        <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-          Tarihin gördüğü en etkili komutanlardan biri. Kısa ömrüne rağmen dünya düzenini kökten değiştirdi.
-        </p>
-      </header>
+    .header h1 {
+      font-size: 40px;
+      color: #d08bff;
+    }
 
-      {/* CONTENT SECTIONS */}
-      <main className="px-8 pb-24 space-y-20">
-        {/* HAYATI */}
-        <section id="hayat" className="bg-[#13131c] p-8 rounded-2xl shadow-xl border border-purple-700/30">
-          <h3 className="text-2xl font-semibold text-purple-300 mb-4">Hayatı (Kısa)</h3>
-          <p className="text-gray-300 leading-relaxed">
-            Büyük İskender (MÖ 356 – MÖ 323), Makedonya kralı II. Filip’in oğluydu. Genç yaşta tahta geçti
-            ve kısa süre içinde Yunan şehirlerini birleştirerek büyük bir imparatorluk kurmaya yöneldi.
-            Öğretmeni Aristoteles sayesinde kültür, strateji ve yönetim konusunda geniş bir eğitim aldı.
-          </p>
-        </section>
+    .section {
+      background: #151525;
+      margin: 40px auto;
+      max-width: 800px;
+      padding: 25px;
+      border-radius: 15px;
+      border: 1px solid #a533ff55;
+      box-shadow: 0px 0px 25px #a533ff22;
+    }
 
-        {/* FETİHLER */}
-        <section id="fetihler" className="bg-[#161622] p-8 rounded-2xl shadow-xl border border-red-600/30">
-          <h3 className="text-2xl font-semibold text-red-300 mb-4">Başlıca Fetihleri</h3>
-          <ul className="list-disc ml-5 space-y-2 text-gray-300">
-            <li>Pers İmparatorluğu'nu tamamen yenerek ortadan kaldırdı.</li>
-            <li>İssos ve Gaugamela savaşlarında büyük zaferler kazandı.</li>
-            <li>Mısır'ı fethedip İskenderiye kentini kurdu.</li>
-            <li>Hindistan'a kadar ilerleyerek antik dünyanın sınırlarını genişletti.</li>
-          </ul>
-        </section>
+    .section h2 {
+      color: #ff4680;
+      margin-bottom: 10px;
+    }
 
-        {/* MİRASI */}
-        <section id="mirasi" className="bg-[#1a1a27] p-8 rounded-2xl shadow-xl border border-purple-600/30">
-          <h3 className="text-2xl font-semibold text-purple-300 mb-4">Mirası</h3>
-          <p className="text-gray-300 leading-relaxed">
-            İskender’in fetihleri, Hellenistik kültürün kıtalar boyunca yayılmasına yol açtı. Yönettiği geniş
-            topraklarda farklı kültürler etkileşime girdi ve bilim, mimari, ticaret hızlı şekilde gelişti.
-            Kısa süren hükümdarlığına rağmen "Dünya İmparatoru" algısı tarih boyunca kültürleri etkiledi.
-          </p>
-        </section>
-      </main>
+    ul li {
+      margin: 6px 0;
+    }
 
-      {/* FOOTER */}
-      <footer className="text-center text-gray-500 py-6 border-t border-purple-600/20">
-        <p className="text-sm">© Ödev Projesi — Büyük İskender Web Sitesi</p>
-      </footer>
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #777;
+      border-top: 1px solid #a533ff22;
+      margin-top: 30px;
+    }
+
+    .kaynaklar {
+      color: #c074ff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <div class="nav">
+    <div class="logo">BÜYÜK İSKENDER</div>
+    <div>
+      <a href="#hayat">Hayatı</a>
+      <a href="#fetih">Fetihleri</a>
+      <a href="#mirasi">Mirası</a>
+      <a href="#kaynaklar">Kaynaklar</a>
     </div>
-  );
-}
+  </div>
+
+  <!-- HERO -->
+  <div class="header">
+    <h1>BÜYÜK İSKENDER</h1>
+    <p>Tarihin en güçlü liderlerinden biri.</p>
+  </div>
+
+  <!-- HAYAT -->
+  <div class="section" id="hayat">
+    <h2>Hayatı</h2>
+    <p>
+      Büyük İskender (MÖ 356 – 323), Makedonya kralı II. Filip’in oğluydu. Aristoteles’ten eğitim aldı
+      ve genç yaşta tahta geçerek dünya tarihini değiştiren bir hükümdar oldu.
+    </p>
+  </div>
+
+  <!-- FETİHLER -->
+  <div class="section" id="fetih">
+    <h2>Başlıca Fetihleri</h2>
+    <ul>
+      <li>Pers İmparatorluğu'nu tamamen yıktı.</li>
+      <li>Gaugamela ve İssos savaşlarında büyük zaferler kazandı.</li>
+      <li>Mısır’ı fethedip İskenderiye’yi kurdu.</li>
+      <li>Hindistan'a kadar ilerledi.</li>
+    </ul>
+  </div>
+
+  <!-- MİRASI -->
+  <div class="section" id="mirasi">
+    <h2>Mirası</h2>
+    <p>
+      İskender’in fetihleri Hellenistik kültürün kıtalara yayılmasını sağladı. Kültürel etkileşim,
+      bilim ve ticaret hızla gelişti. Ölümünden sonra bile etkisi yüzyıllarca sürdü.
+    </p>
+  </div>
+
+  <!-- KAYNAKLAR -->
+  <div class="section" id="kaynaklar">
+    <h2 class="kaynaklar">Kaynaklar</h2>
+    <ul>
+      <li>Britannica – Alexander the Great</li>
+      <li>History.com – Alexander the Great</li>
+      <li>Ancient.eu – Alexander III of Macedon</li>
+    </ul>
+  </div>
+
+  <footer>
+    © 2025 Büyük İskender Tanıtım Sitesi
+  </footer>
+
+</body>
+</html>
