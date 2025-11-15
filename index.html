@@ -1,218 +1,163 @@
 /*
-Büyük İskender (Alexander the Great) - Tek dosyalık React bileşeni
-Kullanım:
-- Projeyi Create React App veya Vite + Tailwind ile başlatın.
-- Tailwind kurulu olduğunu varsayıyorum. (tailwindcss v3+)
-- Bu bileşeni src/App.jsx olarak koyun ve projeyi çalıştırın.
-- GitHub Pages için build -> deploy adımlarını uygulayın.
+BÜYÜK İSKENDER - GİTHUB SİTESİ (Tek Dosyalık React + Tailwind)
 
-Renk paleti: koyu, uyumlu ve fazla açık olmayan tonlar (zeytin/çelik/mor/bronze).
+Özellikler:
+- Daha modern, 'web-site' hissi: sabit üst navbar, bölüm geçişleri, kartlar, küçük hero.
+- Renk paleti: derin zemin tonları + mücevher / bronz vurgu. Canlı ama göz yormaz.
+- Az fotoğraf: yalnızca bir küçük portre/ikon ve minimal dekoratif görseller (placeholder).
+- Metin kısa ve öz: uzun makale yok; okumayı kolaylaştırır.
+- Responsive: mobil/masaüstü için düzen.
+
+Kullanım:
+1) Projeyi Vite veya Create React App ile başlatın.
+2) Tailwind CSS (v3+) kurulu olmalı.
+3) Bu dosyayı `src/App.jsx` olarak kaydedin.
+4) `npm run dev` veya `npm run start` ile çalıştırın.
+
+NOT: Görseller placeholder olarak uzaktan yükleniyor; istersen kendi küçük görselini koy.
 */
 
-import React from "react";
+import React from 'react';
 
-export default function AlexanderSite() {
+export default function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#0f1724] via-[#0b1220] to-[#081018] text-gray-100 antialiased">
-      {/* Container */}
-      <div className="max-w-6xl mx-auto p-6 lg:p-12">
-        {/* Header / Nav */}
-        <header className="flex items-center justify-between mb-8">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-full flex items-center justify-center bg-gradient-to-br from-[#6b4b2f] to-[#3f2e25] shadow-md ring-1 ring-black/30">
-              <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-amber-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 2v6m0 0L8 6m4 2l4-2M4 21h16" />
+    <div className="min-h-screen bg-gradient-to-b from-[#081018] via-[#071226] to-[#051018] text-gray-100 font-sans antialiased">
+      {/* NAVBAR */}
+      <header className="sticky top-0 z-40 backdrop-blur-sm bg-black/30 border-b border-black/20">
+        <div className="max-w-6xl mx-auto px-6 md:px-10 flex items-center justify-between h-16">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#6b4b2f] to-[#9b6f3a] flex items-center justify-center shadow-sm">
+              {/* minimalist helmet icon */}
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-amber-100" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.2" d="M4 12s1-4 8-4 8 4 8 4v6H4v-6z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.2" d="M6 12c0-1.5 3-3 6-3s6 1.5 6 3" />
               </svg>
             </div>
             <div>
-              <h1 className="text-lg font-semibold tracking-tight">Büyük İskender</h1>
-              <p className="text-sm text-gray-400">M.Ö. 356 — M.Ö. 323 • Makedon Kralı ve Fetihlerin Mimarı</p>
+              <div className="text-sm font-semibold">Büyük İskender</div>
+              <div className="text-xs text-gray-300">M.Ö. 356 — M.Ö. 323</div>
             </div>
           </div>
 
-          <nav className="hidden md:flex gap-4 items-center text-sm text-gray-300">
-            <a href="#about" className="hover:text-amber-300">Hakkında</a>
-            <a href="#timeline" className="hover:text-amber-300">Zaman Çizelgesi</a>
-            <a href="#campaigns" className="hover:text-amber-300">Seferler</a>
-            <a href="#gallery" className="hover:text-amber-300">Galeri</a>
-            <a href="#sources" className="hover:text-amber-300">Kaynaklar</a>
+          <nav className="hidden md:flex gap-6 text-sm text-gray-300">
+            <a href="#about" className="hover:text-amber-300 transition">Hakkında</a>
+            <a href="#highlights" className="hover:text-amber-300 transition">Vurgu</a>
+            <a href="#campaigns" className="hover:text-amber-300 transition">Seferler</a>
+            <a href="#contact" className="hover:text-amber-300 transition">Kaynaklar</a>
           </nav>
-        </header>
 
-        {/* Hero */}
-        <section className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center mb-12">
+          <div className="md:hidden text-sm text-gray-300">Menu</div>
+        </div>
+      </header>
+
+      {/* HERO */}
+      <main className="max-w-6xl mx-auto px-6 md:px-10 py-10">
+        <section className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center mb-8">
           <div className="lg:col-span-2">
-            <div className="p-8 rounded-2xl bg-gradient-to-br from-[#081018]/60 to-[#10202b]/50 ring-1 ring-white/5 shadow-lg">
-              <h2 className="text-3xl lg:text-4xl font-extrabold leading-tight">Büyük İskender — Fetihlerin Hızı ve Mirası</h2>
-              <p className="mt-4 text-gray-300">Makedonya kralı II. Filip'in oğlu, zekâsı, askeri dehası ve hızla genişleyen imparatorluğu ile tanınır. Kısa yaşamına rağmen Helenistik dünyanın temellerini attı; siyasi, kültürel ve askeri etkileri yüzyıllar boyunca sürdü.</p>
+            <div className="rounded-2xl p-8 bg-gradient-to-br from-[#071226]/60 to-[#0b1722]/60 ring-1 ring-white/5 shadow-lg">
+              <h1 className="text-3xl md:text-4xl font-extrabold leading-tight">Büyük İskender — Hızlı, Keskin, Kalıcı</h1>
+              <p className="mt-3 text-gray-300 max-w-2xl">Kısa bir ömre sığdırdığı devasa fetihlerle Helenistik çağın temellerini atmış hükümdar. Bu site, uzun uzadıya makale yerine; net, görsel dengeli ve kolay gezilebilir bir özet sunar.</p>
 
-              <div className="mt-6 flex gap-3">
-                <a href="#timeline" className="inline-block px-4 py-2 rounded-md bg-amber-600/90 hover:bg-amber-500 transition">Zaman Çizelgesine Git</a>
-                <a href="#campaigns" className="inline-block px-4 py-2 rounded-md ring-1 ring-white/6 text-sm">Seferleri İncele</a>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <a href="#campaigns" className="px-4 py-2 rounded-md bg-gradient-to-br from-[#8b5e3c] to-[#5b3a25] text-amber-100 shadow-sm">Seferleri Gör</a>
+                <a href="#highlights" className="px-4 py-2 rounded-md ring-1 ring-white/6">Kısa Özet</a>
               </div>
-
-              <dl className="mt-6 grid grid-cols-2 gap-4 text-sm text-gray-300">
-                <div className="p-3 rounded-lg bg-black/20">
-                  <dt className="text-xs uppercase text-gray-400">Doğum</dt>
-                  <dd className="font-medium">M.Ö. 356, Pella</dd>
-                </div>
-                <div className="p-3 rounded-lg bg-black/20">
-                  <dt className="text-xs uppercase text-gray-400">Tahta Çıkışı</dt>
-                  <dd className="font-medium">M.Ö. 336</dd>
-                </div>
-                <div className="p-3 rounded-lg bg-black/20">
-                  <dt className="text-xs uppercase text-gray-400">Ölüm</dt>
-                  <dd className="font-medium">M.Ö. 323, Babil</dd>
-                </div>
-                <div className="p-3 rounded-lg bg-black/20">
-                  <dt className="text-xs uppercase text-gray-400">İmparatorluk</dt>
-                  <dd className="font-medium">Makedonya'dan Hindistan'a</dd>
-                </div>
-              </dl>
             </div>
           </div>
 
-          <aside className="p-6 rounded-2xl bg-[#0b141b]/60 ring-1 ring-white/4 shadow-md">
-            <h3 className="text-lg font-semibold mb-3">Hızlı Metrikler</h3>
-            <ul className="space-y-3 text-sm text-gray-300">
-              <li><strong>Muharebe Sayısı:</strong> ~20+ büyük savaş</li>
-              <li><strong>İlerleme Hızı:</strong> ~3 yılda İran İmparatorluğu</li>
-              <li><strong>Kurduğu Şehirler:</strong> 70+ (İskenderiye dahil)</li>
-              <li><strong>Miras:</strong> Helenistik kültür yayılımı</li>
-            </ul>
+          <aside className="p-6 rounded-2xl bg-[#07121a]/60 ring-1 ring-white/4 shadow-sm">
+            <div className="flex items-start gap-3">
+              <div className="w-14 h-14 rounded-full bg-[#14212a] flex items-center justify-center">
+                {/* small portrait placeholder */}
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-amber-200" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 2l2 5 5 .5-4 3 1 5-4-3-4 3 1-5-4-3 5-.5L12 2z" />
+                </svg>
+              </div>
+              <div>
+                <div className="text-sm text-gray-300 font-semibold">Hızlı Bilgiler</div>
+                <ul className="mt-2 text-xs text-gray-300 space-y-1">
+                  <li><strong>Doğum:</strong> M.Ö. 356, Pella</li>
+                  <li><strong>Tahta:</strong> M.Ö. 336</li>
+                  <li><strong>Ölüm:</strong> M.Ö. 323, Babil</li>
+                </ul>
+              </div>
+            </div>
           </aside>
         </section>
 
-        {/* About */}
-        <section id="about" className="mb-12">
-          <div className="p-8 rounded-2xl bg-gradient-to-br from-[#071018]/50 to-[#0b141a]/40 ring-1 ring-white/6 shadow-sm">
-            <h2 className="text-2xl font-bold">Kısa Biyografi</h2>
-            <p className="mt-4 text-gray-300">M.Ö. 356'da Pella'da doğan II. Filip'in oğlu III. Aleksandros (Büyük İskender), tutkulu bir eğitimle (Aristoteles tarafından eğitildi) yetişti. Genç yaşta ordunun başında yer aldı; babasının suikastının ardından M.Ö. 336'da tahta geçti. Kısa sürede Yunan şehir devletlerindeki direnci kırdı ve Pers İmparatorluğu'nu fethe başladı. Granikos (M.Ö. 334), İssos (M.Ö. 333) ve Gaugamela (M.Ö. 331) gibi büyük zaferlerle Pers ordularını bozguna uğrattı. M.Ö. 326'da Hindistan'ın kuzeybatısına ulaştı, ancak ordusunun geri dönme isteği ve onun ani ölümü (M.Ö. 323, Babil) ile seferleri son buldu.</p>
-
-            <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="p-4 rounded-lg bg-black/20">
-                <h4 className="font-semibold">Eğitimi</h4>
-                <p className="text-sm text-gray-300">Aristoteles tarafından felsefe, bilim, edebiyat ve politika eğitimi aldı; bu eğitim hem yönetim anlayışını hem de kültürel duyarlılığını şekillendirdi.</p>
-              </div>
-              <div className="p-4 rounded-lg bg-black/20">
-                <h4 className="font-semibold">Askeri Deha</h4>
-                <p className="text-sm text-gray-300">Hız, esneklik, taktik yenilik (falanks + atlı birlik koordinasyonu) ve liderlik yeteneği ile ordusunu uzak coğrafyalarda başarıyla yönetti.</p>
-              </div>
-              <div className="p-4 rounded-lg bg-black/20">
-                <h4 className="font-semibold">Kültürel Etki</h4>
-                <p className="text-sm text-gray-300">Kurulan İskenderiyeler ve Helenistik krallıklar, Yunan kültürü ile Doğu geleneklerini harmanlayarak bilim, sanat ve ticarette bir sentez yarattı.</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Timeline */}
-        <section id="timeline" className="mb-12">
-          <h2 className="text-2xl font-bold mb-4">Zaman Çizelgesi</h2>
-          <ol className="border-l border-gray-700 ml-4">
-            {[
-              {year: 'M.Ö. 356', title: 'Doğum - Pella', desc: 'M.Ö. 356 yılında Makedonya, Pella kentinde doğdu.'},
-              {year: 'M.Ö. 340s', title: 'Aristoteles ile Eğitim', desc: 'Genç Aleksandros, Aristoteles tarafından eğitildi.'},
-              {year: 'M.Ö. 336', title: 'Tahta Çıkış', desc: 'II. Filip suikastı sonrası Aleksandros kral oldu.'},
-              {year: 'M.Ö. 334', title: 'Asya Seferi Başladı', desc: 'Asia Minor'da Perslere karşı savaşa başladı (Granikos).'},
-              {year: 'M.Ö. 333', title: 'İssos Zaferi', desc: 'Kral III. Darios ile karşılaşma; Pers ordusu geri çekildi.'},
-              {year: 'M.Ö. 331', title: 'Gaugamela', desc: 'Pers İmparatorluğu'na karşı kesin zafer; Pers toprakları Makedon kontrolüne geçti.'},
-              {year: 'M.Ö. 323', title: 'Ölüm', desc: 'Babil'de ani ölüm. İmparatorluk mirası bölündü.'}
-            ].map((item, idx) => (
-              <li key={idx} className="mb-6 ml-6">
-                <span className="absolute -ml-10 mt-1 w-3 h-3 rounded-full bg-amber-500 ring-4 ring-black/40"></span>
-                <div className="text-sm text-amber-200 font-semibold">{item.year}</div>
-                <div className="mt-1 text-lg font-medium">{item.title}</div>
-                <p className="text-gray-300 mt-1 text-sm">{item.desc}</p>
-              </li>
-            ))}
-          </ol>
-        </section>
-
-        {/* Campaigns */}
-        <section id="campaigns" className="mb-12">
-          <h2 className="text-2xl font-bold mb-4">Büyük Seferler (Özet)</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="p-6 rounded-xl bg-black/20">
-              <h3 className="font-semibold">Batı Asya ve Pers İmparatorluğu</h3>
-              <p className="text-sm text-gray-300 mt-2">Alexander, Makedon ordusuyla Batı Asya'ya hızla ilerleyerek Pers güçlerini birbiri ardına yendi. Pers hükümdarlığını yıkan bu zaferler, Makedon yönetiminin geniş çaplı yayılımını sağladı.</p>
-
-              <ul className="mt-4 text-sm text-gray-300 space-y-2">
-                <li><strong>Granikos (M.Ö. 334):</strong> Anadolu kıyılarında ilk büyük çarpışma.</li>
-                <li><strong>İssos (M.Ö. 333):</strong> Persia kralı ile karşılaşma.</li>
-                <li><strong>Gaugamela (M.Ö. 331):</strong> Pers İmparatorluğu'nun çöküşünü hızlandırdı.</li>
-              </ul>
-            </div>
-
-            <div className="p-6 rounded-xl bg-black/20">
-              <h3 className="font-semibold">Doğu İlerleyişi ve Hindistan</h3>
-              <p className="text-sm text-gray-300 mt-2">Gazilerinin yorulması ve yerel koşulların zorluğu, seferlerin sınırlarını çizdi. Hindistan'ın kuzeybatısına kadar ilerledi; ancak orada yerel krallıklarla karşılaştı ve sonunda geri dönüş kararı alındı.</p>
-            </div>
-          </div>
-
-          <div className="mt-6 rounded-lg overflow-hidden ring-1 ring-white/6">
-            {/* Harita için görsel - placeholder */}
-            <img alt="Alexander campaigns map" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" className="w-full h-56 object-cover grayscale contrast-90" />
-            <div className="p-4 bg-gradient-to-t from-black/50 text-gray-200">
-              <small>Not: Bu harita görsel amaçlıdır. Ayrıntılı tarihi haritalar için akademik kaynaklara bakın.</small>
-            </div>
-          </div>
-        </section>
-
-        {/* Achievements & Legacy */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-bold mb-4">Başarılar ve Miras</h2>
+        {/* HIGHLIGHTS (short, card-based) */}
+        <section id="highlights" className="mb-8">
+          <h2 className="text-2xl font-bold mb-4">Kısa Vurgu</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="p-4 rounded-lg bg-black/20">
-              <h4 className="font-semibold">Şehir Kurma</h4>
-              <p className="text-sm text-gray-300">İskenderiye gibi şehirler, ticaret, bilim ve yerleşimi teşvik etti. Bu şehirler Helenistik dünyanın kültürel merkezleri oldu.</p>
+            <div className="p-4 rounded-xl bg-gradient-to-br from-[#071221]/40 to-[#0b1620]/30 ring-1 ring-white/4">
+              <h3 className="font-semibold">Askeri Deha</h3>
+              <p className="text-sm text-gray-300 mt-2">Falanks ve atlı birliklerin koordinasyonu, hızlı manevralar ve keskin liderlik.</p>
             </div>
-            <div className="p-4 rounded-lg bg-black/20">
-              <h4 className="font-semibold">Kültürel Sentez</h4>
-              <p className="text-sm text-gray-300">Yunan ve Doğu kültürleri arasında etkileşim; sanat, bilim ve felsefede yeni sentezler doğdu.</p>
+            <div className="p-4 rounded-xl bg-gradient-to-br from-[#071221]/40 to-[#0b1620]/30 ring-1 ring-white/4">
+              <h3 className="font-semibold">Helenistik Miras</h3>
+              <p className="text-sm text-gray-300 mt-2">Yunan kültürünün Doğu ile birleşmesi; şehirler, bilim ve ticaret merkezleri kuruldu.</p>
             </div>
-            <div className="p-4 rounded-lg bg-black/20">
-              <h4 className="font-semibold">Askeri Miras</h4>
-              <p className="text-sm text-gray-300">Taktikler ve birlik organizasyonu sonraki askeri liderlere ilham verdi; falanks modelinin kullanımı genişledi.</p>
+            <div className="p-4 rounded-xl bg-gradient-to-br from-[#071221]/40 to-[#0b1620]/30 ring-1 ring-white/4">
+              <h3 className="font-semibold">Şehir Kurma</h3>
+              <p className="text-sm text-gray-300 mt-2">İskenderiye başta olmak üzere kurulan şehirler uzun süreli kültürel merkezler oldu.</p>
             </div>
           </div>
         </section>
 
-        {/* Gallery */}
-        <section id="gallery" className="mb-12">
-          <h2 className="text-2xl font-bold mb-4">Galeri</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[
-              'https://images.unsplash.com/photo-1563201517-6a7a2ea2b1c5?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=1',
-              'https://images.unsplash.com/photo-1549887534-6c8b7c3f0b1d?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=2',
-              'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=3',
-              'https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=4'
-            ].map((src, i) => (
-              <figure key={i} className="overflow-hidden rounded-lg bg-black/10">
-                <img src={src} alt={`gallery-${i}`} className="w-full h-40 object-cover transform hover:scale-105 transition" />
-              </figure>
-            ))}
+        {/* CAMPAIGNS (concise) */}
+        <section id="campaigns" className="mb-8">
+          <h2 className="text-2xl font-bold mb-4">Seferler — Özet Kartlar</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <article className="p-5 rounded-lg bg-[#08121a]/60 ring-1 ring-white/5">
+              <h4 className="font-semibold">Anadolu ve Pers Orduları</h4>
+              <p className="text-sm text-gray-300 mt-2">Granikos (M.Ö. 334) ile başlayan saldırılar kısa sürede Pers ordularını geri çekilmeye zorladı.</p>
+              <div className="mt-3 text-xs text-gray-400">İssos (M.Ö. 333) ve Gaugamela (M.Ö. 331) zaferleri belirleyiciydi.</div>
+            </article>
+
+            <article className="p-5 rounded-lg bg-[#08121a]/60 ring-1 ring-white/5">
+              <h4 className="font-semibold">Doğu İlerleyişi ve Hindistan</h4>
+              <p className="text-sm text-gray-300 mt-2">M.Ö. 326'da Hindistan'ın kuzeybatısına ulaştı; emir-komuta karmaşası ve asker yorgunluğu geri dönüşe sebep oldu.</p>
+              <div className="mt-3 text-xs text-gray-400">Seferler, alan hakimiyetinden ziyade kültürel etkileşim yarattı.</div>
+            </article>
           </div>
         </section>
 
-        {/* Sources */}
-        <section id="sources" className="mb-12">
-          <h2 className="text-2xl font-bold mb-4">Kaynaklar & Daha Fazla Okuma</h2>
-          <p className="text-sm text-gray-300">Aşağıdaki kaynaklar, Büyük İskender hakkında derinlemesine okumalar sunar. (Bu statik sitede doğrudan linkleri kullanabilirsiniz.)</p>
-          <ul className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-gray-300">
-            <li className="p-3 rounded bg-black/20">Arrian - Anabasis of Alexander (tarihi kaynak)</li>
-            <li className="p-3 rounded bg-black/20">Plutarch - Lives: Alexander</li>
-            <li className="p-3 rounded bg-black/20">Robin Lane Fox - The Search for Alexander</li>
-            <li className="p-3 rounded bg-black/20">Peter Green - Alexander of Macedon</li>
+        {/* TIMELINE — compact */}
+        <section className="mb-8">
+          <h2 className="text-2xl font-bold mb-4">Kısa Zaman Çizelgesi</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm text-gray-300">
+            <div className="p-3 rounded-md bg-black/20">
+              <div className="font-semibold">M.Ö. 356</div>
+              <div>Pella'da doğdu</div>
+            </div>
+            <div className="p-3 rounded-md bg-black/20">
+              <div className="font-semibold">M.Ö. 336</div>
+              <div>Tahta çıktı</div>
+            </div>
+            <div className="p-3 rounded-md bg-black/20">
+              <div className="font-semibold">M.Ö. 323</div>
+              <div>Babil'de öldü</div>
+            </div>
+          </div>
+        </section>
+
+        {/* SOURCES */}
+        <section id="contact" className="mb-10">
+          <h2 className="text-2xl font-bold mb-3">Kaynaklar (Hızlı Başlangıç)</h2>
+          <p className="text-sm text-gray-300">Arrian, Plutarch ve modern tarihçilerin kısa listesi. Ayrıntılı okumaları ayrı bir sayfada/rek bölmede verebiliriz — istersen kısa bir kaynak sayfası daha oluşturayım.</p>
+          <ul className="mt-3 text-sm text-gray-300 space-y-2">
+            <li>Arrian — Anabasis of Alexander</li>
+            <li>Plutarch — Life of Alexander</li>
+            <li>Robin Lane Fox — The Search for Alexander</li>
           </ul>
         </section>
 
-        {/* Footer */}
-        <footer className="mt-6 p-6 rounded-lg text-sm text-gray-400 bg-black/10 flex flex-col md:flex-row justify-between items-center">
-          <div>© {new Date().getFullYear()} — Büyük İskender (statik bilgi sitesi)</div>
-          <div className="mt-3 md:mt-0">Hazırlayan: Sen — Özelleştir ve GitHub Pages'e yükle.</div>
+        {/* FOOTER */}
+        <footer className="py-6 border-t border-black/20 text-sm text-gray-400 flex flex-col md:flex-row justify-between gap-3">
+          <div>© {new Date().getFullYear()} — Büyük İskender</div>
+          <div>Hazırlayan: Sen • GitHub Pages ile yayınlamak için `build` ve `gh-pages` kullanabilirsin.</div>
         </footer>
-      </div>
+      </main>
     </div>
   );
 }
